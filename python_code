@@ -1,0 +1,37 @@
+import matplotlib.pyplot as plt
+import time
+
+print("When prompted, type the word displayed. You will get 5 attempts to type your heart out")
+
+time.sleep(3)
+start=time.time()
+
+entries=[]
+durations=[]
+trials=[]
+
+while len(entries)<5:
+    typed_word=input("pepperoni")
+    
+    entries.append(typed_word)
+    durations.append(time.time())
+    
+    if len(entries)>1:
+        result=durations[len(durations)-1]-durations[len(durations)-2]
+        print (result, "seconds")
+        trials.append(result)
+    else:
+        result2=durations[0]-start
+        print (result2, "seconds")
+        trials.append(result2)
+    print("do it again, girl!")    
+
+x=[1,2,3,4,5]
+y=trials
+
+plt.plot(x,y)
+plt.title("typing speed in seconds")
+legend=[1,2,3,4,5]
+plt.xticks(x,legend)
+plt.show()
+    
