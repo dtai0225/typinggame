@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import time
 
-print("When prompted, type the word displayed. You will get 5 attempts to type your heart out")
+print("When prompted, type the word displayed. You will get 5 attempts to type your heart out. Ready?")
 
 time.sleep(3)
 start=time.time()
@@ -9,28 +9,44 @@ start=time.time()
 entries=[]
 durations=[]
 trials=[]
+mistakes=[]
 
 while len(entries)<5:
+    time.sleep(2)
     typed_word=input("pepperoni")
-    
+    if typed_word!="pepperoni":
+        mistakes.append(1)
+        
     entries.append(typed_word)
     durations.append(time.time())
     
-    if len(entries)>1:
+    if len(entries)>1 and len(entries)<5:
         result=durations[len(durations)-1]-durations[len(durations)-2]
-        print (result, "seconds")
-        trials.append(result)
+        print (round(result,4), "seconds")
+        trials.append(len(typed_word)/result)
+        print("do it again, girl! Ready?") 
+    elif len(entries)==5:
+        result=durations[len(durations)-1]-durations[len(durations)-2]
+        print (round(result,4), "seconds")
+        trials.append(len(typed_word)/result)
+        print("thank you. now I'm calculating the data")
     else:
         result2=durations[0]-start
-        print (result2, "seconds")
-        trials.append(result2)
-    print("do it again, girl!")    
+        print (round(result2,4), "seconds")
+        trials.append(len(typed_word)/(result2))
+      
+    
 
 x=[1,2,3,4,5]
 y=trials
 
+time.sleep(5)
+print("you missed",sum(mistakes),"words")
+
+time.sleep(3)
+
 plt.plot(x,y)
-plt.title("typing speed in seconds")
+plt.title("typing speed in letters per seconds")
 legend=[1,2,3,4,5]
 plt.xticks(x,legend)
 plt.show()
