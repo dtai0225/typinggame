@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import time
 
-print("When prompted, type the word displayed. You will get 5 attempts to type your heart out. Ready?")
+print("When prompted, type the sentence displayed. You will get 5 attempts to type your heart out. Ready?")
 
 time.sleep(3)
 start=time.time()
@@ -13,8 +13,8 @@ mistakes=[]
 
 while len(entries)<5:
     time.sleep(2)
-    typed_sentence=input("pepperoni")
-    if typed_sentence!="pepperoni":
+    typed_sentence=input("I love to eat pepperoni pizza from Mike's Pizzeria.")
+    if typed_sentence!="I love to eat pepperoni pizza from Mike's Pizzeria.":
         mistakes.append(1)
         
     entries.append(typed_sentence)
@@ -29,11 +29,11 @@ while len(entries)<5:
         result=durations[len(durations)-1]-durations[len(durations)-2]
         print (round(result,4), "seconds")
         trials.append(len(typed_sentence)/result)
-        print("thank you. now I'm calculating the data")
+        print("Thank you. Now I'm calculating the data")
     else:
         result2=durations[0]-start
         print (round(result2,4), "seconds")
-        trials.append(len(typed_sentenced)/(result2))
+        trials.append(len(typed_sentence)/(result2))
       
     
 
@@ -41,7 +41,7 @@ x=[1,2,3,4,5]
 y=trials
 
 time.sleep(5)
-print("you missed",sum(mistakes),"words")
+print("you had",sum(mistakes),"errors")
 
 time.sleep(3)
 
