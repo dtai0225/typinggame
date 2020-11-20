@@ -13,27 +13,27 @@ mistakes=[]
 
 while len(entries)<5:
     time.sleep(2)
-    typed_word=input("pepperoni")
-    if typed_word!="pepperoni":
+    typed_sentence=input("pepperoni")
+    if typed_sentence!="pepperoni":
         mistakes.append(1)
         
-    entries.append(typed_word)
+    entries.append(typed_sentence)
     durations.append(time.time())
     
     if len(entries)>1 and len(entries)<5:
         result=durations[len(durations)-1]-durations[len(durations)-2]
         print (round(result,4), "seconds")
-        trials.append(len(typed_word)/result)
-        print("do it again, girl! Ready?") 
+        trials.append(len(typed_sentence)/result)
+        print("Give it another try! Ready?") 
     elif len(entries)==5:
         result=durations[len(durations)-1]-durations[len(durations)-2]
         print (round(result,4), "seconds")
-        trials.append(len(typed_word)/result)
+        trials.append(len(typed_sentence)/result)
         print("thank you. now I'm calculating the data")
     else:
         result2=durations[0]-start
         print (round(result2,4), "seconds")
-        trials.append(len(typed_word)/(result2))
+        trials.append(len(typed_sentenced)/(result2))
       
     
 
