@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import time
 
-print("When prompted, type the sentence displayed. You will get 5 attempts to type your heart out. Ready?")
+print("When prompted, type the sentence displayed. You will get 5 attempts to type your heart out.")
 
 time.sleep(3)
 start=time.time()
@@ -16,6 +16,7 @@ while len(entries)<5:
     typed_sentence=input("I love to eat pepperoni pizza from Mike's Pizzeria.")
     if typed_sentence!="I love to eat pepperoni pizza from Mike's Pizzeria.":
         mistakes.append(1)
+
         
     entries.append(typed_sentence)
     durations.append(time.time())
@@ -24,7 +25,7 @@ while len(entries)<5:
         result=durations[len(durations)-1]-durations[len(durations)-2]
         print (round(result,4), "seconds")
         trials.append(len(typed_sentence)/result)
-        print("Give it another try! Ready?") 
+        print("Give it another try!") 
     elif len(entries)==5:
         result=durations[len(durations)-1]-durations[len(durations)-2]
         print (round(result,4), "seconds")
@@ -34,6 +35,7 @@ while len(entries)<5:
         result2=durations[0]-start
         print (round(result2,4), "seconds")
         trials.append(len(typed_sentence)/(result2))
+        print("Give it another try!") 
       
     
 
@@ -50,4 +52,3 @@ plt.title("typing speed in letters per seconds")
 legend=[1,2,3,4,5]
 plt.xticks(x,legend)
 plt.show()
-    
